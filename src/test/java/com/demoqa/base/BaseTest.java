@@ -8,6 +8,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -18,11 +19,13 @@ import org.testng.annotations.BeforeMethod;
 public class BaseTest {
   protected HomePage homePage;
   protected String url = "https://demoqa.com/";
-  private WebDriver driver;
+  protected WebDriver driver;
 
   @BeforeClass
   public void setUp() {
-    driver = new ChromeDriver();
+    ChromeOptions chromeOptions = new ChromeOptions();
+    chromeOptions.addArguments("--headless=new");
+    driver = new ChromeDriver(chromeOptions);
     driver.manage().window().maximize();
   }
 

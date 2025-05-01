@@ -13,6 +13,7 @@ public class HomePage extends BasePage {
   public By links = By.xpath("//span[text()='Links']");
   public By selectMenu = By.xpath("//span[text()='Select Menu']");
   public By datePicker = By.xpath("//span[text()='Date Picker']");
+  public By modalDialogs = By.xpath("//span[text()='Modal Dialogs']");
 
   // Constructor
   public HomePage(WebDriver driver) {
@@ -26,7 +27,7 @@ public class HomePage extends BasePage {
 
   // Actions
   protected By getCardLocator(String cardName) {
-    return By.xpath("//h5[text()='" + cardName + "']");
+    return By.xpath("//h5[contains(text(), '" + cardName + "')]");
   }
 
   public <T> T transferToSpecificPage(String cardName, By element, Class<T> pageClassName) {
