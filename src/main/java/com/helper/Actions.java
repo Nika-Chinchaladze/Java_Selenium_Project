@@ -4,13 +4,19 @@ import com.data.enums.ClickOptions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Actions extends BaseHelp {
   public Actions(final WebDriver driver) {
     super(driver);
   }
 
+  public void navigateToUrl(String url) {
+    driver.get(url);
+  }
+
   public void clickOnElement(By locator) {
+    wait.until(ExpectedConditions.elementToBeClickable(locator));
     find(locator).click();
   }
 
@@ -43,6 +49,7 @@ public class Actions extends BaseHelp {
   }
 
   public void setValueInField(By locator, String text) {
+    wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     find(locator).clear();
     find(locator).sendKeys(text);
   }
@@ -75,5 +82,20 @@ public class Actions extends BaseHelp {
   public void deSelectByIndex(By locator, Integer index) {
     scrollToElementJS(locator);
     findDropDown(locator).deselectByIndex(index);
+  }
+
+  public void acceptAlert() {
+    alert = wait.until(ExpectedConditions.alertIsPresent());
+    alert.accept();
+  }
+
+  public void dismissAlert() {
+    alert = wait.until(ExpectedConditions.alertIsPresent());
+    alert.dismiss();
+  }
+
+  public void sendKeysToAlert(String promtText) {
+    alert = wait.until(ExpectedConditions.alertIsPresent());
+    alert.sendKeys(promtText);
   }
 }

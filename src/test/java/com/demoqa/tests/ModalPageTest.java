@@ -11,8 +11,10 @@ public class ModalPageTest extends ModalPageBaseTest {
     private ModalDialogPage modalDialogPage;
 
     @BeforeMethod(description = "Navigate user to ModalPage")
-    public void navigateToModalPage() {
-        modalDialogPage = homePage.transferToSpecificPage("Alerts", homePage.modalDialogs, ModalDialogPage.class);
+    public void testUserIsRedirectedToModalPage() {
+        homePage.actions.navigateToUrl(homePage.url);
+        assertTrue(homePage.verifyHomePage());
+        modalDialogPage = homePage.transferToSpecificPage("Alerts", homePage.getSectionLocator("Modal Dialogs"), ModalDialogPage.class);
     }
 
     @Test(description = "Test ModalPage is opened and elements are displayed")

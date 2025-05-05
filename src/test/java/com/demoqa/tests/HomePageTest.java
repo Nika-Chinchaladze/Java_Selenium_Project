@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class HomePageTest extends BaseTest {
   @Test(description = "testHomePage")
   public void testHomePage() {
-    homePage.waiters.delay(2000);
+    homePage.actions.navigateToUrl(homePage.url);
     assertTrue(homePage.verifyHomePage());
   }
 }

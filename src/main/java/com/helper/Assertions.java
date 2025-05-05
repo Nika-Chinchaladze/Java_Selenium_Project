@@ -5,6 +5,7 @@ import java.util.Objects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Assertions extends BaseHelp {
   public Assertions(final WebDriver driver) {
@@ -52,5 +53,10 @@ public class Assertions extends BaseHelp {
     List<String> allSelectedTextContent =
         allSelectedElement.stream().map(WebElement::getText).toList();
     return allSelectedTextContent.contains(elementContent);
+  }
+
+  public boolean verifyAlertByTextContent(String alertText) {
+    alert = wait.until(ExpectedConditions.alertIsPresent());
+    return alert.getText().contains(alertText);
   }
 }

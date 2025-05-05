@@ -8,12 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class HomePage extends BasePage {
   // Locators
   public By cards = By.className("category-cards");
-  public By practiceForm = By.xpath("//span[text()='Practice Form']");
-  public By webTables = By.xpath("//span[text()='Web Tables']");
-  public By links = By.xpath("//span[text()='Links']");
-  public By selectMenu = By.xpath("//span[text()='Select Menu']");
-  public By datePicker = By.xpath("//span[text()='Date Picker']");
-  public By modalDialogs = By.xpath("//span[text()='Modal Dialogs']");
+  public String url = "https://demoqa.com/";
 
   // Constructor
   public HomePage(WebDriver driver) {
@@ -28,6 +23,10 @@ public class HomePage extends BasePage {
   // Actions
   protected By getCardLocator(String cardName) {
     return By.xpath("//h5[contains(text(), '" + cardName + "')]");
+  }
+
+  public By getSectionLocator(String sectionName) {
+    return By.xpath("//span[text()='" + sectionName + "']");
   }
 
   public <T> T transferToSpecificPage(String cardName, By element, Class<T> pageClassName) {

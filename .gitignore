@@ -1,6 +1,6 @@
 target/
 resources/
-target/allure-results/
+allure-results/
 target/allure-results/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

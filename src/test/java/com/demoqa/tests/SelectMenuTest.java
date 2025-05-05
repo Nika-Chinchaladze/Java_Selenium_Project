@@ -12,10 +12,11 @@ public class SelectMenuTest extends BaseTest {
   private SelectMenuPage selectMenuPage;
 
   @BeforeMethod(description = "transferToSelectMenuPage")
-  public void navigateToSelectMenuPage() {
+  public void testUserIsRedirectedToSelectMenuPage() {
+    homePage.actions.navigateToUrl(homePage.url);
     assertTrue(homePage.verifyHomePage());
     selectMenuPage =
-        homePage.transferToSpecificPage("Widgets", homePage.selectMenu, SelectMenuPage.class);
+        homePage.transferToSpecificPage("Widgets", homePage.getSectionLocator("Select Menu"), SelectMenuPage.class);
     assertTrue(selectMenuPage.verifySelectMenuPage());
   }
 
