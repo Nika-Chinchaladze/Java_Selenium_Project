@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.util.Set;
 
 public class Actions extends BaseHelp {
   public Actions(final WebDriver driver) {
@@ -94,8 +95,45 @@ public class Actions extends BaseHelp {
     alert.dismiss();
   }
 
-  public void sendKeysToAlert(String promtText) {
+  public void sendKeysToAlert(String promptText) {
     alert = wait.until(ExpectedConditions.alertIsPresent());
-    alert.sendKeys(promtText);
+    alert.sendKeys(promptText);
   }
+
+  public void switchToFrameByStringId(String nameId) {
+    driver.switchTo().frame(nameId);
+  }
+
+  public void switchToFrameByIndex(Integer index) {
+    driver.switchTo().frame(index );
+  }
+
+  public void switchToFrameByWebElement(By locator) {
+    driver.switchTo().frame(find(locator));
+  }
+
+  public void switchFromFrameToDocument() {
+    driver.switchTo().parentFrame();
+  }
+
+  public String storeOriginalWindow() {
+    return driver.getWindowHandle();
+  }
+
+  public void switchToNewWindow(String originalWindow) {
+    Set<String> windowHandles = driver.getWindowHandles();
+    for (String handle : windowHandles) {
+      if (!handle.equals(originalWindow)) {
+        driver.switchTo().window(handle);
+        break;
+      }
+    }
+  }
+
+  public void switchBackToOriginalWindow(String originalWindow) {
+    driver.switchTo().window(originalWindow);
+  }
+
+  // Mouse Movements -->> Slider Page
+  // KeyBoard Actions -->> Text Box
 }

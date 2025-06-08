@@ -22,7 +22,7 @@ public class BaseTest {
   @BeforeClass
   public void setUp() {
     ChromeOptions chromeOptions = new ChromeOptions();
-    chromeOptions.addArguments("--headless=new");
+    // chromeOptions.addArguments("--headless=new");
     driver = new ChromeDriver(chromeOptions);
     driver.manage().window().maximize();
     homePage = new HomePage(driver);
