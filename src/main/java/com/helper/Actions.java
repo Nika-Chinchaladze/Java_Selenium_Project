@@ -134,6 +134,9 @@ public class Actions extends BaseHelp {
     driver.switchTo().window(originalWindow);
   }
 
+  public String getElementAttributeValue(By locator, String attributeName) {
+    return find(locator).getDomAttribute(attributeName);
+  }
   // Mouse Movements -->> Slider Page
   // KeyBoard Actions -->> Text Box
 }

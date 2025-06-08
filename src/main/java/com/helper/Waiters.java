@@ -9,13 +9,13 @@ import org.openqa.selenium.By;
 import java.time.Duration;
 
 public class Waiters extends BaseHelp {
-  private WebDriverWait explicitWaiter() {
-    return new WebDriverWait(driver, Duration.ofSeconds(10));
+  private WebDriverWait explicitWaiter(int seconds) {
+    return new WebDriverWait(driver, Duration.ofSeconds(seconds));
   }
 
-  private FluentWait<WebDriver> fluentWaiter() {
+  private FluentWait<WebDriver> fluentWaiter(int seconds) {
     return new FluentWait<>(driver)
-            .withTimeout(Duration.ofSeconds(10))
+            .withTimeout(Duration.ofSeconds(seconds))
             .pollingEvery(Duration.ofSeconds(2))
             .ignoring(NoSuchElementException.class);
   }
@@ -37,11 +37,19 @@ public class Waiters extends BaseHelp {
             .until(driver -> driver.getWindowHandles().size() > 1);
   }
 
-  public void explicitWaitUntilVisible(By locator) {
-    explicitWaiter().until(ExpectedConditions.visibilityOfElementLocated(locator));
+  public void explicitWaitUntilVisible(By locator, int seconds) {
+    explicitWaiter(seconds).until(ExpectedConditions.visibilityOfElementLocated(locator));
   }
 
-  public void fluentWaitUntilVisible(By locator) {
-    fluentWaiter().until(driver -> find(locator));
-  } // Progress Bar
+  public void explicitWaitUntilAttributeValue(By locator, String attributeName, String attributeValue, int seconds) {
+    explicitWaiter(seconds).until(ExpectedConditions.attributeToBe(locator, attributeName, attributeValue));
+  }
+
+  public void fluentWaitUntilVisible(By locator, int seconds) {
+    fluentWaiter(seconds).until(driver -> find(locator));
+  }
+
+  public void fluentWaitUntilAttributeValue(By locator, String attributeName, String attributeValue, int seconds) {
+    fluentWaiter(seconds).until(ExpectedConditions.attributeToBe(locator, attributeName, attributeValue));
+  }
 }

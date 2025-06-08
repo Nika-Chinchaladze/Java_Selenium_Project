@@ -69,6 +69,20 @@
                 <artifactId>allure-maven</artifactId>
                 <version>2.11.2</version>
             </plugin>
+
+            <!-- allure clean plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.basedir}/allure-results</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

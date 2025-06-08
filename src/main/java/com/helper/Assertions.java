@@ -59,4 +59,8 @@ public class Assertions extends BaseHelp {
     alert = wait.until(ExpectedConditions.alertIsPresent());
     return alert.getText().contains(alertText);
   }
+
+  public boolean verifyAttributeValue(By locator, String attributeName, String attributeValue) {
+    return Objects.requireNonNull(find(locator).getDomAttribute(attributeName)).contains(attributeValue);
+  }
 }
