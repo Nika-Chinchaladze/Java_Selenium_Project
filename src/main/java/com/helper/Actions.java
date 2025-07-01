@@ -26,7 +26,7 @@ public class Actions extends BaseHelp {
   }
 
   public void scrollToElementJS(By locator) {
-    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", find(locator));
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", find(locator));
   }
 
   public void scrollToElementAndClick(By locator, ClickOptions option) {
@@ -137,6 +137,4 @@ public class Actions extends BaseHelp {
   public String getElementAttributeValue(By locator, String attributeName) {
     return find(locator).getDomAttribute(attributeName);
   }
-  // Mouse Movements -->> Slider Page
-  // KeyBoard Actions -->> Text Box
 }

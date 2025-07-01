@@ -21,9 +21,9 @@ public class AddModalWindow extends TablePage {
   }
 
   // Methods
-  public void verifyAddModalWindow() {
+  public boolean verifyAddModalWindow() {
     By[] locators = {window, title, firstName, lastName, email, age, salary, department, submitBtn};
-    assertions.verifyMultipleElementsAreDisplayed(locators);
+    return assertions.verifyMultipleElementsAreDisplayed(locators);
   }
 
   public void fillAddRecordForm(

@@ -14,7 +14,6 @@ public class AlertPageTest extends BaseTest {
     protected AlertPage alertPage;
     protected AlertWrapper alertData;
 
-
     @BeforeClass(description = "loads alert data")
     public void loadAlertData() {
         alertData = JsonHandler.readJsonFile("src/test/java/com/demoqa/resources/alerts_test_data.json", AlertWrapper.class);

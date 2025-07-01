@@ -25,23 +25,23 @@ public class TablePageTest extends BaseTest {
   public void testWebTableDelete() {
     tablePage.actions.clickOnElement(tablePage.deleteIcon3);
     assertTrue(tablePage.assertions.verifyElementIsNotDisplayed(tablePage.deleteIcon3));
-    tablePage.waiters.delay(2000);
   }
 
   @Test(description = "testWebTableEdit")
   public void testWebTableEdit() {
     var editModalWindow = tablePage.openEditModalWindow("cierra@example.com");
+    editModalWindow.waiters.fluentWaitUntilVisible(editModalWindow.window, 30);
     assertTrue(editModalWindow.verifyEditModalWindow());
     editModalWindow.editRecord("Tommy", "Shelby", 27, 1500, "AQA");
     assertTrue(
         tablePage.assertions.verifyElementIsDisplayed(tablePage.getTableRowLocator("Tommy")));
-    tablePage.waiters.delay(3000);
   }
 
   @Test(description = "testWebTablesAdd")
   public void testWebTablesAdd() {
     var addModalWindow = tablePage.openAddModalWindow();
-    addModalWindow.verifyAddModalWindow();
+    addModalWindow.waiters.fluentWaitUntilVisible(addModalWindow.window, 30);
+    assertTrue(addModalWindow.verifyAddModalWindow());
     addModalWindow.fillAddRecordForm("Artur", "Shelby", "artur@gmail.com", 30, 2000, "Gangster");
     assertTrue(addModalWindow.assertions.verifyElementHasValue(addModalWindow.firstName, "Artur"));
     assertTrue(addModalWindow.assertions.verifyElementHasValue(addModalWindow.lastName, "Shelby"));
@@ -59,6 +59,5 @@ public class TablePageTest extends BaseTest {
     assertTrue(
         tablePage.assertions.verifyElementIsDisplayed(
             tablePage.getTableRowLocator("artur@gmail.com")));
-    tablePage.waiters.delay(3000);
   }
 }

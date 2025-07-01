@@ -13,7 +13,19 @@ public class Assertions extends BaseHelp {
   }
 
   public boolean verifyPageUrl(String url) {
-    return driver.getCurrentUrl() == url;
+    String pageUrl = driver.getCurrentUrl();
+    if (pageUrl != null) {
+      return pageUrl.equals(url);
+    }
+    return false;
+  }
+
+  public boolean verifyPageTitle(String title) {
+    String pageTitle = driver.getTitle();
+    if (pageTitle != null) {
+      return pageTitle.equals(title);
+    }
+    return false;
   }
 
   public boolean verifyElementIsDisplayed(By locator) {

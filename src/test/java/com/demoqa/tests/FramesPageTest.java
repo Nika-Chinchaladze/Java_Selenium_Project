@@ -49,7 +49,7 @@ public class FramesPageTest extends BaseTest {
     public void testSwitchBackMultiple() {
         assertTrue(framesPage.verifyFramesPage());
         // Second Stage
-        framesPage.actions.switchToFrameByIndex(3);
+        framesPage.actions.switchToFrameByIndex(2);
         assertTrue(framesPage.assertions.verifyElementHasText(framesPage.frameTitle, "This is a sample page"));
         framesPage.actions.switchFromFrameToDocument();
         // First Stage
