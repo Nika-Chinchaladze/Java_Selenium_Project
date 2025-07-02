@@ -26,6 +26,11 @@ public class AlertPageTest extends BaseTest {
         alertPage = homePage.transferToSpecificPage("Alerts", homePage.getSectionLocator("Alerts"), AlertPage.class);
     }
 
+    @Test
+    public void verifyExecution() {
+        System.out.println(">>>> TEST EXECUTED <<<<");
+    }
+
     @Test(description = "Verify AlertPage is opened")
     public void testAlertPage() {
         assertTrue(alertPage.verifyAlertPage());
