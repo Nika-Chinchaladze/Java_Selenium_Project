@@ -1,23 +1,23 @@
 package com.demoqa.tests;
 
 import com.demoqa.pages.AlertPage;
-import com.pojo.alert.AlertWrapper;
-import com.utils.JsonHandler;
+// import com.pojo.alert.AlertWrapper;
+// import com.utils.JsonHandler;
 import com.data.enums.ClickOptions;
 import com.demoqa.base.BaseTest;
-import org.testng.annotations.BeforeClass;
+// import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class AlertPageTest extends BaseTest {
     protected AlertPage alertPage;
-    protected AlertWrapper alertData;
+    // protected AlertWrapper alertData;
 
-    @BeforeClass(description = "loads alert data")
-    public void loadAlertData() {
-        alertData = JsonHandler.readJsonFile("src/test/java/com/demoqa/resources/alerts_test_data.json", AlertWrapper.class);
-    }
+    // @BeforeClass(description = "loads alert data")
+    // public void loadAlertData() {
+    //   alertData = JsonHandler.readJsonFile("src/test/java/com/demoqa/resources/alerts_test_data.json", AlertWrapper.class);
+    // }
 
     @BeforeMethod(description = "Navigate user to alerts page")
     public void testUserIsRedirectedToAlertPage() {
@@ -40,7 +40,7 @@ public class AlertPageTest extends BaseTest {
     public void testSimpleAlert() {
         alertPage.actions.scrollToElementAndClick(alertPage.simpleAlertBtn, ClickOptions.SELENIUM);
         assertTrue(alertPage.assertions.verifyAlertByTextContent(
-          alertData.getAlerts().getSimpleAlert().getQuestion()
+                "You clicked a button"
         ));
         alertPage.actions.acceptAlert();
     }
@@ -49,12 +49,12 @@ public class AlertPageTest extends BaseTest {
     public void testConfirmationAlertPositive() {
         alertPage.actions.scrollToElementAndClick(alertPage.confirmAlertBtn, ClickOptions.SELENIUM);
         assertTrue(alertPage.assertions.verifyAlertByTextContent(
-          alertData.getAlerts().getConfirmationAlert().getQuestion()
+                "Do you confirm action?"
         ));
         alertPage.actions.acceptAlert();
         assertTrue(alertPage.assertions.verifyElementHasText(
           alertPage.confirmationResult,
-          alertData.getAlerts().getConfirmationAlert().getTextOk()
+                "You selected Ok"
         ));
     }
 
@@ -62,12 +62,12 @@ public class AlertPageTest extends BaseTest {
     public void testConfirmationAlertNegative() {
         alertPage.actions.scrollToElementAndClick(alertPage.confirmAlertBtn, ClickOptions.SELENIUM);
         assertTrue(alertPage.assertions.verifyAlertByTextContent(
-          alertData.getAlerts().getConfirmationAlert().getQuestion()
+                "Do you confirm action?"
         ));
         alertPage.actions.dismissAlert();
         assertTrue(alertPage.assertions.verifyElementHasText(
           alertPage.confirmationResult,
-          alertData.getAlerts().getConfirmationAlert().getTextCancel()
+                "You selected Cancel"
         ));
     }
 
@@ -75,20 +75,20 @@ public class AlertPageTest extends BaseTest {
     public void testPromptAlertPositive() {
         alertPage.actions.scrollToElementAndClick(alertPage.promptAlertBtn, ClickOptions.SELENIUM);
         assertTrue(alertPage.assertions.verifyAlertByTextContent(
-          alertData.getAlerts().getPromptAlert().getQuestion()
+                "Please enter your name"
         ));
-        alertPage.actions.sendKeysToAlert(alertData.getAlerts().getPromptAlert().getValue());
+        alertPage.actions.sendKeysToAlert("By order of the peacky blinders");
         alertPage.actions.acceptAlert();
         assertTrue(alertPage.assertions.verifyElementHasText(
           alertPage.promptResult,
-          alertData.getAlerts().getPromptAlert().getValue()
+                "By order of the peacky blinders"
         ));
     }
 
     @Test(description = "Verify prompt alert - Cancel scenario")
     public void testPromptAlertNegative() {
         alertPage.actions.scrollToElementAndClick(alertPage.promptAlertBtn, ClickOptions.SELENIUM);
-        assertTrue(alertPage.assertions.verifyAlertByTextContent(alertData.getAlerts().getPromptAlert().getQuestion()));
+        assertTrue(alertPage.assertions.verifyAlertByTextContent("Please enter your name"));
         alertPage.actions.dismissAlert();
         assertTrue(alertPage.assertions.verifyElementIsNotDisplayed(alertPage.promptResult));
     }

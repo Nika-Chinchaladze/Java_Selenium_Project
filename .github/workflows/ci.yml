@@ -33,4 +33,4 @@ jobs:
           rm -rf allure-results
 
       - name: Run tests
-        run: mvn clean test -Dtest=com.demoqa.tests.HomePageTest
+        run: mvn clean test
