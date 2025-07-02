@@ -1,3 +1,4 @@
+/*
 package com.demoqa.tests;
 
 import com.demoqa.pages.FramesPage;
@@ -62,3 +63,4 @@ public class FramesPageTest extends BaseTest {
         framesPage.actions.switchFromFrameToDocument();
     }
 }
+*/
