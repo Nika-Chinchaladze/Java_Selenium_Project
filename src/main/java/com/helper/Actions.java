@@ -57,7 +57,7 @@ public class Actions extends BaseHelp {
 
   public void selectByVisibleText(By locator, String visibleText) {
     scrollToElementJS(locator);
-    findDropDown(locator).selectByContainsVisibleText(visibleText);
+    findDropDown(locator).selectByVisibleText(visibleText);
   }
 
   public void selectByHiddenValue(By locator, String hiddenValue) {
@@ -72,7 +72,7 @@ public class Actions extends BaseHelp {
 
   public void deSelectByVisibleText(By locator, String visibleText) {
     scrollToElementJS(locator);
-    findDropDown(locator).deSelectByContainsVisibleText(visibleText);
+    findDropDown(locator).deselectByVisibleText(visibleText);
   }
 
   public void deSelectByHiddenValue(By locator, String hiddenValue) {
