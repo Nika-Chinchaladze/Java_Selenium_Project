@@ -33,4 +33,4 @@ jobs:
           rm -rf allure-results
 
       - name: Run tests
-        run: mvn clean test -Dtest=com.bookstore.UserTest
+        run: mvn clean test -Dtest=com.bookstore.tests.*Test

@@ -1,4 +1,4 @@
-package com.bookstore;
+package com.bookstore.tests;
 
 import com.api.UserApi;
 import io.restassured.response.Response;
