@@ -14,16 +14,16 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>4.25.0</selenium.version>
-        <rest-assured.version>5.5.0</rest-assured.version> <!-- Latest verified version -->
+        <rest-assured.version>5.5.0</rest-assured.version>
         <testng.version>7.11.0</testng.version>
-        <allure.version>2.29.0</allure.version> <!-- Latest available in Maven Central -->
+        <allure.version>2.29.0</allure.version>
         <logback.version>1.5.8</logback.version>
         <jackson.version>2.18.0</jackson.version>
         <hamcrest.version>3.0</hamcrest.version>
         <json-schema-validator.version>1.5.2</json-schema-validator.version>
-        <checkstyle.version>10.18.1</checkstyle.version> <!-- Latest verified version -->
-        <google-java-format.version>1.23.0</google-java-format.version> <!-- Latest verified version -->
-        <surefire.version>3.3.1</surefire.version> <!-- Latest verified version -->
+        <checkstyle.version>10.18.1</checkstyle.version>
+        <google-java-format.version>1.23.0</google-java-format.version>
+        <surefire.version>3.3.1</surefire.version>
     </properties>
 
     <!-- Repositories -->
@@ -168,6 +168,7 @@
                     <systemPropertyVariables>
                         <allure.results.directory>${project.basedir}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
+                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
                 </configuration>
             </plugin>
 
